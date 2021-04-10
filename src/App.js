@@ -1,19 +1,19 @@
-import "./App.css";
-import { useEffect, useState } from "react";
-import { Button } from "./components/Button";
+import './App.css';
+import { useEffect, useState } from 'react';
+import { StyledButton } from './components/Button';
 
 function App() {
   const [playerScore, setPlayerScore] = useState(0);
   const [computerScore, setComputerScore] = useState(0);
-  const [result, setResult] = useState("");
+  const [result, setResult] = useState('');
 
   // player selection on button click
   // computer selection
 
-  const getWinner = (selection) => {
+  const getWinner = selection => {
     const playerSelection = parseInt(selection);
     const computerSelection = Math.floor(Math.random() * 3);
-    let winner = "";
+    let winner = '';
 
     if (playerSelection === computerSelection) {
       winner = "It's a tie!";
@@ -25,10 +25,10 @@ function App() {
       }
 
       if (playerSelection === winningChoice) {
-        winner = "You won!";
+        winner = 'You won!';
         setPlayerScore(playerScore + 1);
       } else {
-        winner = "You lost!";
+        winner = 'You lost!';
         setComputerScore(computerScore + 1);
       }
     }
@@ -43,38 +43,44 @@ function App() {
   }, [result]);
 
   return (
-    <div className="App">
+    <div className='App'>
       <h1>Rock Paper Scissors!</h1>
-      <Button
-        id="0"
-        className="btn"
-        value="0"
-        onClick={(event) => {
+      <StyledButton
+        theme={{
+          '@bp2': 'blue'
+        }}
+        size={{
+          '@initial': 'small',
+          '@bp1': 'large'
+        }}
+        id='0'
+        value='0'
+        onClick={event => {
           getWinner(event.target.value);
         }}
       >
         Rock
-      </Button>
-      <Button
-        id="1"
-        className="btn-1"
-        value="1"
-        onClick={(event) => {
+      </StyledButton>
+      <StyledButton
+        theme='orange'
+        id='1'
+        value='1'
+        onClick={event => {
           getWinner(event.target.value);
         }}
       >
         Paper
-      </Button>
-      <Button
-        id="2"
-        className="btn-2"
-        value="2"
-        onClick={(event) => {
+      </StyledButton>
+      <StyledButton
+        theme='violet'
+        id='2'
+        value='2'
+        onClick={event => {
           getWinner(event.target.value);
         }}
       >
         Scissors
-      </Button>
+      </StyledButton>
 
       <div>
         <span>{result}</span>
