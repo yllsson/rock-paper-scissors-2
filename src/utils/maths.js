@@ -5,7 +5,6 @@ export const getWinner = (selection, computerScore, playerScore) => {
 
   if (playerSelection === computerSelection) {
     result = "It's a tie!";
-    console.log('a');
   } else {
     let winningChoice = computerSelection + 1;
 
@@ -16,18 +15,15 @@ export const getWinner = (selection, computerScore, playerScore) => {
     if (playerSelection === winningChoice) {
       result = 'You won!';
       playerScore = playerScore + 1;
-      console.log('b');
     } else {
       result = 'You lost!';
       computerScore = computerScore + 1;
-      console.log('c');
     }
   }
 
-  console.log(playerSelection, computerSelection, result);
   return {
     playerScore,
     computerScore,
-    result,
+    result
   };
 };
